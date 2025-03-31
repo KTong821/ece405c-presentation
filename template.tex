@@ -156,6 +156,7 @@
 
 \begin{document}
 
+\newcommand*{\ket}[1]{\rvert#1\rangle}
 %----------------------------------------------------------------------------------------
 %	TITLE SLIDE
 %----------------------------------------------------------------------------------------
@@ -370,9 +371,19 @@
 
 %------------------------------------------------
 
-\subsection{Efficient Polynomial Multiplication}
+\subsection{Polynomial Multiplication}
 \begin{frame}
-    \frametitle{Efficient Polynomial Multiplication}
+    \frametitle{Polynomial Multiplication}
+    For two polynomials of degree $n$, 
+    \begin{align*}
+        A(x) &= a_0 + a_1x + a_2x^2 + \cdots + a_(n-1)x^{n-1} \\
+        B(x) &= b_0 + b_1x + b_2x^2 + \cdots + b_(n-1)x^{n-1} \\ 
+    \end{align*}
+    The goal is to simply to find their product:
+    \[
+        C(x) = \sum_{j=0}^{n-1}\sum_{k=0}^{n-1}a_kb_kx^{j+k} 
+    \]
+
     \begin{itemize}
         \item Naïve polynomial multiplication $\longrightarrow$ $O(n^2)$
         \item Karatsuba Algorithm $\longrightarrow$ $O(n^{\log_3 2}) = O(n^{1.59})$
@@ -381,6 +392,81 @@
 
 \end{frame}
 
+%------------------------------------------------
+
+\begin{frame}
+    \frametitle{Polynomial Multiplication}
+    For two polynomials of degree $n$, 
+    \begin{align*}
+        A(x) &= a_0 + a_1x + a_2x^2 + \cdots + a_(n-1)x^{n-1} \\
+        B(x) &= b_0 + b_1x + b_2x^2 + \cdots + b_(n-1)x^{n-1} \\ 
+    \end{align*}
+    The goal is to simply to find their product:
+    \[
+        C(x) = \sum_{j=0}^{n-1}\sum_{k=0}^{n-1}a_kb_kx^{j+k} 
+    \]
+    The naïve approach is to directly evaluate the summation 
+    (i.e. long multiplication/grade-school multiplication).
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+    \frametitle{Efficient Polynomial Multiplication}
+    Multiple algorithms for multiplication:
+    \begin{itemize}
+        \item Naïve polynomial multiplication $\longrightarrow$ $O(n^2)$
+        \item Karatsuba Algorithm $\longrightarrow$ $O(n^{\log_3 2}) = O(n^{1.59})$
+        \item FFT $\longrightarrow$ $O(n\log n)$
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+    \frametitle{Polynomial Multiplication with FFT}
+    \begin{enumerate}
+        \item Apply FFT to the coefficients of $A(x)$ and $B(x)$ \\
+        With $\vec{a} = [a_0\,\,a_1\dots a_{n-1}]^T$ and $\vec{b} = [b_0\,\,b_1\dots b_{n-1}]^T$, then
+        \begin{align*}
+            \vec{\alpha} &= \text{FFT}(\vec{a}) \tag*{$O(n\log n)$} \\
+            \vec{\beta} &= \text{FFT}(\vec{b}) \tag*{$O(n\log n)$}
+        \end{align*}
+        \item Perform the Hadamard (element-wise) product of coefficients
+        \begin{align*}
+            \vec{\gamma} &= \vec{\alpha} \odot \vec{\beta} \\
+                &= [\alpha_0\beta_0\,\,\,\,\alpha_1\beta_1\dots\alpha_{n-1}\beta_{n-1}]^T \tag*{$O(n)$}
+        \end{align*}
+        \item Apply Inverse FFT
+        \begin{align*}
+            \vec{c} &= \text{IFFT}(\vec{\gamma}) \tag*{$O(n\log n)$}
+        \end{align*}
+    \end{enumerate}
+\end{frame}
+
+%------------------------------------------------
+
+% \begin{frame}
+%     \frametitle{Polynomial Multiplication with QFT}
+%     \begin{enumerate}
+%         \item Apply QFT to quantum states $\ket{\psi}$ and $\ket{\phi}$ 
+%         that are amplitude encodings of polynomial cofficients \\
+%         \item Perform the Hadamard (element-wise) product of 
+%             $\text{QFT}(\ket{\psi})$ and $\text{QFT}(\ket{\phi})$
+%         \item Apply Inverse QFT
+%     \end{enumerate}
+% \end{frame}
+
+%------------------------------------------------
+
+\section{Quantum Algorithms}
+\subsection{Polynomial Multiplication with QFT}
+\begin{frame}
+    \frametitle{Polynomial Multiplication with QFT}
+    \begin{center}
+        \includegraphics[scale=0.7]{basic_circuit.PNG}
+    \end{center}
+\end{frame}
 
 %------------------------------------------------
 
