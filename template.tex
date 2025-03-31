@@ -26,7 +26,9 @@
 
 
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule for better rules in tables
-
+\usepackage{tikz}
+\usepackage{colortbl}
+\usepackage{array}
 %----------------------------------------------------------------------------------------
 %	SELECT LAYOUT THEME
 %----------------------------------------------------------------------------------------
@@ -213,15 +215,65 @@
 \begin{frame}
     \frametitle{Classical Algorithms}
     \begin{itemize}
-        \item Brute Force
-        \item Boyer-Moore
-        \item Suffix Tree/Array
-        \item Karp-Rabin
+        \item Brute Force $\longrightarrow$ $O(mn)$
+        \item Boyer-Moore $\longrightarrow$ $O(n+m)$, $O(mn)$ worst case
+        \item Knuth-Morris-Pratt $\longrightarrow$ $O(n+m)$ worst case
+        \item Suffix Tree/Array $\longrightarrow$ $O(m)/O(n\log n)$ + preproc
+        \item Karp-Rabin - rolling hash $\longrightarrow$ $O(n+m)$ expected
     \end{itemize}
-    TODO - add details (runtime), to above. more for karp-rabin, which polynomial is similar to
-    \bigskip
+
+    \begin{center}
+
+        \begin{tikzpicture}[scale=0.8, y=0.7cm] % Scaling down the entire diagram with flatter cells
+            % Define colors
+            \definecolor{darkred}{RGB}{255,120,120}
+            \definecolor{green}{RGB}{50,200,120}
+
+            % Grid for cells with 6 rows
+            \draw (0,0) -- (10,0);
+            \draw (0,1) -- (10,1);
+            \draw (0,2) -- (10,2);
+            \draw (0,3) -- (10,3);
+            \draw (0,4) -- (10,4);
+            \draw (0,5) -- (10,5);
+            \draw (0,6) -- (10,6);
+            \draw (0,0) -- (0,6);
+            \draw (1,0) -- (1,6);
+            \draw (2,0) -- (2,6);
+            \draw (3,0) -- (3,6);
+            \draw (4,0) -- (4,6);
+            \draw (5,0) -- (5,6);
+            \draw (6,0) -- (6,6);
+            \draw (7,0) -- (7,6);
+            \draw (8,0) -- (8,6);
+            \draw (9,0) -- (9,6);
+            \draw (10,0) -- (10,6);
+
+            % Add the letters at the top WITHOUT borders
+            \foreach \x/\num in {0.5/G, 1.5/T, 2.5/A, 3.5/T, 4.5/G, 5.5/A, 6.5/T, 7.5/C, 8.5/T, 9.5/C} {
+                    \node at (\x,5.5) {\num};
+                }
+
+            % Fill colors for different cells - one per row
+            \fill[darkred] (0,4) rectangle (5,5); % First hash value
+            \fill[darkred] (1,3) rectangle (6,4); % Second hash value 
+            \fill[darkred] (2,2) rectangle (7,3); % Third hash value
+            \fill[darkred] (3,1) rectangle (8,2); % Fourth hash value
+            \fill[green] (4,0) rectangle (9,1); % Fifth hash value
+
+            % Add the hash-value text
+            \node at (2.5,4.5) {hash-value 84};
+            \node at (3.5,3.5) {hash-value 194};
+            \node at (4.5,2.5) {hash-value 6};
+            \node at (5.5,1.5) {hash-value 18};
+            \node at (6.5,0.5) {hash-value 95};
+
+        \end{tikzpicture}
+
+    \end{center}
+
     \begin{itemize}
-        \item \alert{Polynomial Matching}
+        \item \alert{Polynomial Matching} $\longrightarrow$ $O(n\log n)$
     \end{itemize}
 \end{frame}
 
@@ -308,29 +360,12 @@
     \frametitle{Polynomial Matching}
     Add patterns together:
     \begin{align*}
-        P(x)   & = P_1(x) + P_2(x)                                           \\
-        S(x)   & = -7x^{15} + 11x^{14} - 3x^{13} + ... + 11x^7 + 5x^6        \\
-        R(x)   & = ... + 94x^8 + 240x^9 + 272x^{10} + 64x^{11} + 296x^{12} - 60x^{13} ...
-    \end{align*}
-    Notice that $\|P\|^2 = 11^2 + 5^2 + 11^2 + (-3)^2 = 276$ \\
-    \bigskip
-    No more exact matches, but highest values correspond to likeliest index.
-\end{frame}
-
-%------------------------------------------------
-
-
-\begin{frame}
-    \frametitle{Polynomial Matching}
-    Add patterns together:
-    \begin{align*}
         P(x) & = P_1(x) + P_2(x)                                                        \\
         S(x) & = -7x^{15} + 11x^{14} - 3x^{13} + ... + 11x^7 + 5x^6                     \\
         R(x) & = ... + 94x^8 + 240x^9 + 272x^{10} + 64x^{11} + 296x^{12} - 60x^{13} ...
     \end{align*}
-    Notice that $\|P\|^2 = 11^2 + 5^2 + 11^2 + (-3)^2 = 276$ \\
     \bigskip
-    No more exact matches, but highest values correspond to likeliest index.
+    No more exact matches, but higher values = likelier index.
 \end{frame}
 
 %------------------------------------------------
@@ -338,8 +373,12 @@
 \subsection{Efficient Polynomial Multiplication}
 \begin{frame}
     \frametitle{Efficient Polynomial Multiplication}
-    Talk about naive $O(n^2)$, Karatsuba, and FFT
-    
+    \begin{itemize}
+        \item Naïve polynomial multiplication $\longrightarrow$ $O(n^2)$
+        \item Karatsuba Algorithm $\longrightarrow$ $O(n^{\log_3 2}) = O(n^{1.59})$
+        \item FFT $\longrightarrow$ $O(n\log n)$
+    \end{itemize}
+
 \end{frame}
 
 
