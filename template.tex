@@ -372,34 +372,13 @@
 %------------------------------------------------
 
 \subsection{Polynomial Multiplication}
-\begin{frame}
-    \frametitle{Polynomial Multiplication}
-    For two polynomials of degree $n$, 
-    \begin{align*}
-        A(x) &= a_0 + a_1x + a_2x^2 + \cdots + a_(n-1)x^{n-1} \\
-        B(x) &= b_0 + b_1x + b_2x^2 + \cdots + b_(n-1)x^{n-1} \\ 
-    \end{align*}
-    The goal is to simply to find their product:
-    \[
-        C(x) = \sum_{j=0}^{n-1}\sum_{k=0}^{n-1}a_kb_kx^{j+k} 
-    \]
-
-    \begin{itemize}
-        \item Naïve polynomial multiplication $\longrightarrow$ $O(n^2)$
-        \item Karatsuba Algorithm $\longrightarrow$ $O(n^{\log_3 2}) = O(n^{1.59})$
-        \item FFT $\longrightarrow$ $O(n\log n)$
-    \end{itemize}
-
-\end{frame}
-
-%------------------------------------------------
 
 \begin{frame}
     \frametitle{Polynomial Multiplication}
     For two polynomials of degree $n$, 
     \begin{align*}
-        A(x) &= a_0 + a_1x + a_2x^2 + \cdots + a_(n-1)x^{n-1} \\
-        B(x) &= b_0 + b_1x + b_2x^2 + \cdots + b_(n-1)x^{n-1} \\ 
+        A(x) &= a_0 + a_1x + a_2x^2 + \cdots + a_{n-1}x^{n-1} \\
+        B(x) &= b_0 + b_1x + b_2x^2 + \cdots + b_{n-1}x^{n-1} \\ 
     \end{align*}
     The goal is to simply to find their product:
     \[
