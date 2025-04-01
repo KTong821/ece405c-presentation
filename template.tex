@@ -471,6 +471,23 @@
 %------------------------------------------------
 
 \begin{frame}
+    \frametitle{Using Measurement for Validity}
+ To ensure the validity of quantum element-wise multiplication, 
+    we require the last qubits to be measured as all zero.
+    \newline\newline
+    Consider the simplest case: the element-wise product of two qubits' states
+    \begin{align*}
+        &CNOT_{1\to 2}((a_0\ket{0} + a_1\ket{1}) \otimes (b_0\ket{0} + b_1\ket{1})) \\
+        &= CNOT_{1\to 2}(a_0b_0\ket{00} + a_0b_1\ket{01} + a_1b_0\ket{10} + a_1b_1\ket{11}) \\
+        &= a_0b_0\ket{00} + a_0b_1\ket{01} + a_1b_0\ket{11} + a_1b_1\ket{10} \\
+    \end{align*}
+    Note how the $a_0b_0$ and $a_1b_1$ products are only associated with terms where the second qubit is $\ket{0}$, 
+    and a coefficient product can be ``chosen'' using the state of the first qubit.
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
     \frametitle{Lists}
     \framesubtitle{Bullet Points and Numbered Lists} % Optional subtitle
 
