@@ -555,7 +555,70 @@
 
 %------------------------------------------------
 
-\subsection{Qiskit Results}
+\begin{frame}
+    \frametitle{Algorithmic Analysis}
+    Let $n$ be the degree of the polynomial produced by multiplying $A(x)$ and $B(x)$.
+
+    \bigskip
+    Initial QFT: $O(n^2)$ gates.
+
+    \bigskip
+    The element-wise multiplication: $O(n)$ CNOT gates, 
+    but requries an expected $O(2^n)$ measurements for a result where 
+    the last $n$ qubits are all zero.
+
+    \bigskip
+    Final IQFT: $O(n^2)$ gates.
+
+    \bigskip
+    So the total cost is $O(n^2)$ gates, but expected $O(2^n)$ shots.
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+    \frametitle{Qiskit Results}
+    Text: \texttt{"GTAT GATC TC"}
+    Key: \texttt{"ATCT"}
+
+    \begin{center}
+        \includegraphics[scale=0.5]{aer_search.png}
+    \end{center}
+    Notice that the highest quasi-probability is for state $0101_2 = 5$! 
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+    \frametitle{Multi-String Matching}
+    \begin{itemize}
+        \item Text: \texttt{"GTAT GATC TC"}
+        \item Key 1: \texttt{"ATCT"}
+        \item Key 2: \texttt{"TGAT"}
+        \item Key 3:\texttt{"ACCC"}
+    \end{itemize}
+
+    \begin{center}
+        \includegraphics[scale=0.5]{aer_multi_string_match.png}
+    \end{center}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+    \frametitle{More Qiskit Results}
+    \begin{itemize}
+        \item Text: 90 randomly generated characters $\in {A,T,C,G}$
+        \item Key: 52 characters
+    \end{itemize}
+
+    \begin{center}
+        \includegraphics[scale=0.5]{aer_stress_test.png}
+    \end{center}
+\end{frame}
+
+%------------------------------------------------
+
 \begin{frame}
     \frametitle{Qiskit Results}
     Add some slides describing number of shots, probability distribution, runtime.
