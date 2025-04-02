@@ -560,15 +560,15 @@
     Let $n$ be the degree of the polynomial produced by multiplying $A(x)$ and $B(x)$.
 
     \bigskip
-    Initial QFT: $O(n^2)$ gates.
+    Initial QFT: \textcolor{blue}{$O(n^2)$ gates}.
 
     \bigskip
-    The element-wise multiplication: $O(n)$ CNOT gates, 
+    Element-wise multiplication: \textcolor{blue}{$O(n)$ CNOT gates}, 
     but requries an expected $O(2^n)$ measurements for a result where 
     the last $n$ qubits are all zero.
 
     \bigskip
-    Final IQFT: $O(n^2)$ gates.
+    Final IQFT: \textcolor{blue}{$O(n^2)$ gates}.
 
     \bigskip
     So the total cost is $O(n^2)$ gates, but expected $O(2^n)$ shots.
@@ -595,7 +595,7 @@
         \item Text: \texttt{"GTAT GATC TC"}
         \item Key 1: \texttt{"ATCT"}
         \item Key 2: \texttt{"TGAT"}
-        \item Key 3:\texttt{"ACCC"}
+        \item Key 3: \texttt{"ACCC"}
     \end{itemize}
 
     \begin{center}
