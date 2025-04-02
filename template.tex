@@ -557,7 +557,8 @@
 \subsection{Analysis \& Results}
 \begin{frame}
     \frametitle{Algorithmic Analysis}
-    Let $n$ be the degree of the polynomial produced by multiplying $A(x)$ and $B(x)$.
+    Let $n$ be the number of qubits needed to represent the polynomial 
+    produced by multiplying $A(x)$ and $B(x)$.
 
     \bigskip
     Initial QFT: \textcolor{blue}{$O(n^2)$ gates}.
@@ -584,7 +585,7 @@
     \begin{center}
         \includegraphics[scale=0.5]{aer_search.png}
     \end{center}
-    Notice that the highest quasi-probability is for state $0101_2 = 5$! 
+    Notice that the highest quasi-probability is for state $1010_2$! 
 \end{frame}
 
 %------------------------------------------------
