@@ -186,7 +186,6 @@
 
 %------------------------------------------------
 
-
 \begin{frame}
     \frametitle{String Matching}
     \begin{itemize}
@@ -478,6 +477,7 @@
 
 %------------------------------------------------
 
+\subsection{Elementwise Multiply}
 \begin{frame}
     \frametitle{Elementwise Multiply}
     Is there such a unitary operator? Define
@@ -554,7 +554,7 @@
 % \end{frame}
 
 %------------------------------------------------
-
+\subsection{Analysis \& Results}
 \begin{frame}
     \frametitle{Algorithmic Analysis}
     Let $n$ be the degree of the polynomial produced by multiplying $A(x)$ and $B(x)$.
@@ -619,16 +619,21 @@
 
 %------------------------------------------------
 
-% \begin{frame}
-%     \frametitle{Qiskit Results}
-%     Add some slides describing number of shots, probability distribution, runtime.
-% 
-%     \bigskip
-%     Current code uses statevector, not sure how many shots would be good. Need min $2^n$ just to get elementwise. TODO - try actual simulator
-%     
-%     \bigskip
-%     Try some larger texts
-% \end{frame}
+\section{Next Steps}
+\begin{frame}
+    \frametitle{Next Steps}
+    \begin{enumerate}
+        \item Sometimes patterns destructively interfere $\longrightarrow$ better combination method than addition?
+        \item Encoding uses primes $\longrightarrow$ better interference patterns?
+        \item Wasteful elementwise multiply $\longrightarrow$ reconstruct data using shifted multiply?
+        
+        \bigskip
+        E.g. measure $\ket{01}$:
+        \[
+            \ket{\psi} = \alpha_0\beta_1 \ket{0001} + \alpha_1\beta_0 \ket{0101} + \alpha_2\beta_3 \ket{1001} + \alpha_3\beta_2 \ket{1101}
+        \]
+    \end{enumerate}
+\end{frame}
 
 %------------------------------------------------
 
@@ -638,15 +643,21 @@
     \begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below, you may need to use multiple columns and/or reduce the font size further if you have many references
         \footnotesize % Reduce the font size in the bibliography
 
-        \bibitem[Ramezani et. al., 2023]{p1}
+        \bibitem[Cooley \& Tukey]{p1}
+        James W. Cooley, John W. Tukey (1965)
+        \newblock An Algorithm for the Machine Calculation of Complex Fourier Series
+        \newblock \emph{https://www.ams.org/journals/mcom/1965-19-090/S0025-5718-1965-0178586-1/S0025-5718-1965-0178586-1.pdf}
+
+        \bibitem[Richard M. Karp \& Michael O. Rabin]{p2}
+        Richard M. Karp \& Michael O. Rabin (1987)
+        \newblock Efficient Randomized Pattern-matching Algorithms
+        \newblock \emph{https://doi.org/10.1147/rd.312.0249}
+
+        \bibitem[Ramezani et. al., 2023]{p3}
         Mehdi Ramezani, Morteza Nikaeen, Farnaz Farman, Seyed Mahmoud Ashrafi and Alireza Bahrampour (2023)
         \newblock Quantum Multiplication Algorithm Based on the Convolution Theorem
         \newblock \emph{https://arxiv.org/pdf/2306.08473}
 
-        % \bibitem[Kennedy, 2023]{p2}
-        % Annabelle Kennedy (2023)
-        % \newblock Publication title
-        % \newblock \emph{Journal Name} 12(3), 45 -- 678.
     \end{thebibliography}
 \end{frame}
 
