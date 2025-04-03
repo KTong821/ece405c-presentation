@@ -557,22 +557,19 @@
 \subsection{Analysis \& Results}
 \begin{frame}
     \frametitle{Algorithmic Analysis}
-    Let $n$ be the number of qubits needed to represent the polynomial 
+    Let $N = \log_2 n$ be the number of qubits needed to represent the polynomial 
     produced by multiplying $A(x)$ and $B(x)$.
 
     \bigskip
-    Initial QFT: \textcolor{blue}{$O(n^2)$ gates}.
+    Each QFT: \textcolor{blue}{$O(N^2)$ gates}.
 
     \bigskip
-    Element-wise multiplication: \textcolor{blue}{$O(n)$ CNOT gates}, 
-    but requries an expected $O(2^n)$ measurements for a result where 
-    the last $n$ qubits are all zero.
+    Element-wise multiplication: \textcolor{blue}{$O(N)$ CNOT gates}, 
+    but requries an expected $O(n)$ measurements for a result where 
+    the last $N$ qubits are all zero.
 
     \bigskip
-    Final IQFT: \textcolor{blue}{$O(n^2)$ gates}.
-
-    \bigskip
-    So the total cost is $O(n^2)$ gates, but expected $O(2^n)$ shots.
+    So the total cost is $O(\log^2 n)$ gates, but expected $O(n)$ shots per successful sample.
 \end{frame}
 
 %------------------------------------------------
